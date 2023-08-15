@@ -12,6 +12,7 @@ import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
 import { User } from './entities/User';
 import { GreetingResolver } from './resolvers/greeting';
+import { UserResolver } from './resolvers/user';
 
 const main = async () => {
   await createConnection({
@@ -31,12 +32,13 @@ const main = async () => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       validate: false,
-      resolvers: [GreetingResolver],
+      resolvers: [GreetingResolver, UserResolver],
     }),
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageGraphQLPlayground,
     ],
+    context: ({ req, res }) => ({ req, res }),
   });
 
   await apolloServer.start();
