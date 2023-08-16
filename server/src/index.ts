@@ -13,6 +13,7 @@ import { createConnection } from 'typeorm';
 import { User } from './entities/User';
 import { GreetingResolver } from './resolvers/greeting';
 import { UserResolver } from './resolvers/user';
+import { Context } from './types/Context';
 
 const main = async () => {
   await createConnection({
@@ -38,12 +39,15 @@ const main = async () => {
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageGraphQLPlayground,
     ],
-    context: ({ req, res }) => ({ req, res }),
+    context: ({ req, res }): Pick<Context, 'req' | 'res'> => ({ req, res }),
   });
 
   await apolloServer.start();
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({
+    app,
+    cors: { origin: 'http://localhost:3000', credentials: true },
+  });
 
   const PORT = process.env.PORT || 4000;
 
