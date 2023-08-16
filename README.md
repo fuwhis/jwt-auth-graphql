@@ -4,5 +4,6 @@ My practicing project that includes GraphQL server &amp; JWT Authentication tech
 
 ## Environment
 
--- Postgres Server: `$ password123`
--- Username: `postgres`
+1. Postgres Server:
+   |--Username: `postgres`
+   |--Pwd: `$ password123`
