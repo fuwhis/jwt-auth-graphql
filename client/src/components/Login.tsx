@@ -17,7 +17,7 @@ const Login = () => {
         const response = await login({ variables: { loginInput: { username, password } } })
 
         if (response.data?.login.success) {
-            // localStorage.setItem('accessToken', response.data?.login.accessToken as string) // localStorage
+            localStorage.setItem('accessToken', response.data?.login.accessToken as string) // localStorage
             JWTManager.setToken(response.data?.login.accessToken as string)
             navigate('..')
         } else {
