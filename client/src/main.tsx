@@ -2,11 +2,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import JWTManager from '../src/utils/jwt';
 import App from './App';
 import AuthContextProvider from './context/AuthContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import JWTManager from './utils/jwt';
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
   credentials: 'include'

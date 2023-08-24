@@ -43,7 +43,7 @@ const JWTManager = () => {
 
   const getRefreshToken = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_SERVER_URL, {
+      const response = await fetch(import.meta.env.VITE_REFRESH_TOKEN_URI, {
         credentials: 'include',
       });
 
