@@ -13,4 +13,7 @@ export class UserMutationResponse implements IMutationResponse {
 
   @Field({ nullable: true })
   accessToken?: string;
+
+  @Field()
+  refreshToken?: string;
 }

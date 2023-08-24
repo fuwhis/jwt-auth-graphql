@@ -1,10 +1,15 @@
 import * as bcrypt from 'bcrypt';
-import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Ctx, ID, Mutation, Query, Resolver } from 'type-graphql';
 import { User } from '../entities/User';
+import { Context } from '../types/Context';
 import { LoginInput } from '../types/LoginInput';
 import { RegisterInput } from '../types/RegisterInput';
 import { UserMutationResponse } from '../types/UserMutationResponse';
-import { createToken } from '../utils/auth';
+import {
+  createToken,
+  generateRefreshToken,
+  sendRefreshToken,
+} from '../utils/auth';
 
 @Resolver()
 export class UserResolver {
@@ -49,7 +54,8 @@ export class UserResolver {
 
   @Mutation((_return) => UserMutationResponse)
   async login(
-    @Arg('loginInput') { username, password }: LoginInput
+    @Arg('loginInput') { username, password }: LoginInput,
+    @Ctx() context: Context
   ): Promise<UserMutationResponse> {
     const existingUser = await User.findOne({ username });
 
@@ -70,13 +76,48 @@ export class UserResolver {
         message: 'Incorrect password',
       };
     }
+    const { res } = context;
+    // refresh_token
+    sendRefreshToken(res, existingUser);
 
     return {
       code: 200,
       success: true,
       message: 'Logged in successfully',
       user: existingUser,
-      accessToken: createToken(existingUser),
+      accessToken: createToken('accessToken', existingUser),
+      refreshToken: generateRefreshToken(existingUser),
+    };
+  }
+
+  @Mutation((_return) => UserMutationResponse)
+  async logout(
+    @Arg('userId', (_type) => ID) userId: number,
+    @Ctx() { res }: Context
+  ): Promise<UserMutationResponse> {
+    const existingUser = await User.findOne(userId);
+
+    if (!existingUser) {
+      return {
+        code: 400,
+        success: false,
+      };
+    }
+
+    existingUser.tokenVersion += 1;
+
+    await existingUser.save();
+
+    res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME as string, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/refresh_token',
+    });
+
+    return {
+      code: 200,
+      success: true,
     };
   }
 }

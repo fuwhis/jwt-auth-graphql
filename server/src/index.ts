@@ -5,6 +5,8 @@ import {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import express from 'express';
 import { createServer } from 'http';
 import 'reflect-metadata';
@@ -13,6 +15,7 @@ import { createConnection } from 'typeorm';
 import { User } from './entities/User';
 import { GreetingResolver } from './resolvers/greeting';
 import { UserResolver } from './resolvers/user';
+import refreshTokenRouter from './routes/refreshTokenRouter';
 import { Context } from './types/Context';
 
 const main = async () => {
@@ -27,6 +30,12 @@ const main = async () => {
   });
 
   const app = express();
+
+  app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+
+  app.use(cookieParser());
+
+  app.use('/refresh_token', refreshTokenRouter);
 
   const httpServer = createServer(app);
 
