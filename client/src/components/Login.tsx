@@ -1,9 +1,11 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuthContext } from "../context/AuthContext"
 import { useLoginMutation } from "../generated/graphql"
 import JWTManager from '../utils/jwt'
 
 const Login = () => {
+    const { setIsAuthenticated } = useAuthContext()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -19,6 +21,7 @@ const Login = () => {
         if (response.data?.login.success) {
             localStorage.setItem('accessToken', response.data?.login.accessToken as string) // localStorage
             JWTManager.setToken(response.data?.login.accessToken as string)
+            setIsAuthenticated(true) // set isAuthenticated in context
             navigate('..')
         } else {
             console.log('ERROR', response.data?.login.message);

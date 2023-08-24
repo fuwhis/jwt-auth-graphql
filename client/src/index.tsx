@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import JWTManager from '../src/utils/jwt';
 import App from './App';
+import AuthContextProvider from './context/AuthContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 const httpLink = createHttpLink({
@@ -39,9 +40,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <ApolloProvider client={client}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <AuthContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </AuthContextProvider>
   </ApolloProvider>
 
 );

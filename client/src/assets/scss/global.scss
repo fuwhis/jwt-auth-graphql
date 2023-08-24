@@ -1,0 +1,13 @@
+@import './variables.scss';
+@import './mixins.scss';
+// @import 'sass-rem';
+
+body {
+  background-color: blueviolet;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
