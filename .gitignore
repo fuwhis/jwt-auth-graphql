@@ -1,0 +1,9 @@
+server/node_modules
+server/.env
+server/dist
+
+# docker
+data
+
+.vscode
+dist
