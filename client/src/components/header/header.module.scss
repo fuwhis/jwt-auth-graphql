@@ -1,5 +1,37 @@
 @import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins.scss";
+@import "sass-rem";
 
-.header {
-  background-color: $gradient-blue;
+.header_wrapper {
+  background: hsla(0, 0%, 100%, 0.6);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  height: rem(64px);
+  width: 100%;
+  z-index: 10;
+  transition: color 0.1s ease, background-color 0.1s ease, height 0.25s ease;
+
+  @include flex_center;
+  flex-wrap: nowrap;
+
+  .header_left {
+    flex: initial;
+    max-width: rem(300px);
+  }
+  .header_centre {
+    flex: 1;
+    padding-right: 30%;
+    display: flex;
+    align-items: center;
+  }
+  .header_right {
+    height: rem(64px);
+    width: rem(177px);
+    border-left: 1px solid $solid-neutral-50;
+    .menu_btn {
+      display: flex;
+      gap: rem(8px);
+      height: 100%;
+      width: 100%;
+    }
+  }
 }

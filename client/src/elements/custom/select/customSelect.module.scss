@@ -1,0 +1,53 @@
+@import 'src/assets/scss/variables.scss';
+@import 'src/assets/scss/mixins.scss';
+@import 'sass-rem';
+
+@mixin inputSize($height, $fontSize, $lineHeight) {
+  height: rem($height);
+  border-radius: rem(6px);
+  input {
+    height: inherit;
+    border-radius: rem(6px);
+    padding: 0 rem(16px);
+    color: $black-09;
+    font-weight: 400;
+    font-size: rem($fontSize);
+    line-height: $lineHeight;
+    &::placeholder {
+      font-size: rem($fontSize);
+      font-weight: 400;
+      line-height: $lineHeight;
+      color: $grey-a3;
+      opacity: 1;
+    }
+  }
+}
+
+.custom_select {
+  &.size {
+    &_lg {
+      @include inputSize(56px, 16px, 24px);
+    }
+    &_md {
+      @include inputSize(44px, 14px, 20px);
+    }
+  }
+  &.variant {
+    &_solid {
+      border: 1px solid $grey-f5;
+      background-color: $grey-f5;
+      &:hover {
+        border: 1px solid $informing-primary;
+        background: $white-basic;
+      }
+    }
+    &_ghost {
+      background-color: $white-basic;
+      box-shadow: $gradient-blue;
+      &:hover {
+        border: 1px solid $informing-primary;
+        background: $white-basic;
+      }
+    }
+  }
+}

@@ -80,6 +80,19 @@ $solid-neutral-900: #090a0b;
 $solid-neutral-300: #a3a5ae;
 $solid-neutral-500: #626576;
 $solid-error-700: #a9122b;
+
+// Main Contents Colors
+$black: #000000;
+$white: #ffffff;
+$gray-90: #101014;
+$gray-80: #1f1f29;
+$gray-70: #2c2c34;
+$gray-60: #333439;
+$gray-50: #62626c;
+$gray-40: #7e7e86;
+$gray-30: #9f9ea4;
+$gray-20: #c3c3c3;
+$gray-10: #f2f3f5;
 $informing-primary: #2d68fe;
 $informing-point: #28ffff;
 $informing-waiting: #00c7be;
@@ -94,3 +107,4 @@ $gradient-blue-2: linear-gradient(
   #395fe9,
   #4052e2
 );
+$gradient-custom: linear-gradient(to right, #430089, #82ffa1);

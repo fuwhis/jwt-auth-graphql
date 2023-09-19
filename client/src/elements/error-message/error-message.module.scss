@@ -1,0 +1,7 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+
+.err_msg {
+  display: flex;
+  gap: rem(4px);
+}

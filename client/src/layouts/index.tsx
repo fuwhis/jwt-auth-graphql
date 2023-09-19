@@ -1,15 +1,20 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import Footer from "~/components/footer";
+import Header from "~/components/header";
 
 const Layout = () => {
+
     return (
         <div>
-            LAYOUT
-            <section className="app-section">
-                {/* <Header /> */}
-                <main>
-                    <Outlet />
-                </main>
-                {/* <Footer /> */}
+            <section>
+                {/* <SideBar/>  */}
+                <section className='content-section' style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                    <Header />
+                    <main>
+                        <Outlet />
+                    </main>
+                    <Footer />
+                </section>
             </section>
         </div>
     )

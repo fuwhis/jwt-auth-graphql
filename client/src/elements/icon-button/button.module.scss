@@ -1,0 +1,9 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import 'sass-rem';
+
+.custom_icon_btn {
+  padding: 0;
+  &.custom_icon_btn_default {
+  }
+}

@@ -1,0 +1,23 @@
+@import 'src/assets/scss/variables.scss';
+@import 'src/assets/scss/mixins.scss';
+@import 'sass-rem';
+.form_control {
+  margin-top: rem(10px) !important;
+  .input_label {
+    position: unset;
+    transform: unset;
+    transition: unset;
+    color: $black-09;
+    font-size: rem(16px);
+    font-weight: 500;
+    line-height: rem(20px);
+    letter-spacing: 0;
+    margin-bottom: rem(7px);
+  }
+  .input_custom {
+    background-color: $background;
+  }
+  fieldset {
+    border: 0;
+  }
+}
