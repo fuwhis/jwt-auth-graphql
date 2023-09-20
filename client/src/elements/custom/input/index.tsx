@@ -7,7 +7,7 @@ import CustomFormControlLabel, {
 } from '~/elements/custom-form-control-label'
 import styles from './customInput.module.scss'
 
-export type InputSize = 'md' | 'lg'
+export type InputSize = 'sm' | 'md' | 'lg'
 export type InputAppearance = 'solid' | 'ghost'
 export type InputStyles = {
   inputSize?: InputSize
@@ -16,25 +16,25 @@ export type InputStyles = {
 
 type InputProps = MInputProps &
   CustomFormControlLabelProps & {
-  register?: any
-  error?: boolean
-} & InputStyles
+    register?: any
+    error?: boolean
+  } & InputStyles
 
 const phoneNumberReplaceRegex = /[(a-zA-Z)(?=.*!@#$%^&*()+_/;:"'/?>.,<[{}\])ươƯƠ]/g
 
 const CustomInput = ({
-                       inputSize = 'lg',
-                       inputAppearance = 'solid',
-                       sx,
-                       error,
-                       disabled,
-                       register,
-                       type,
-                       id,
-                       className,
-                       endAdornment,
-                       ...rest
-                     }: InputProps) => {
+  inputSize = 'lg',
+  inputAppearance = 'solid',
+  sx,
+  error,
+  disabled,
+  register,
+  type,
+  id,
+  className,
+  endAdornment,
+  ...rest
+}: InputProps) => {
   const { formProps, rest: restProps } = getFormControlLabelProps(rest)
 
   const registerObj = register
@@ -56,7 +56,7 @@ const CustomInput = ({
     setShowPassword((prev: boolean) => !prev)
   }
 
-  const EndAdormentPassword = () => (
+  const EndAdornmentPassword = () => (
     <InputAdornment className={styles.visibility} position='end'>
       <IconButton
         className={styles.visibility_btn}
@@ -113,7 +113,7 @@ const CustomInput = ({
         disabled={disabled}
         id={id}
         type={getType(type)}
-        endAdornment={type === 'password' ? <EndAdormentPassword /> : endAdornment || undefined}
+        endAdornment={type === 'password' ? <EndAdornmentPassword /> : endAdornment || undefined}
         sx={{
           ...getInputEffect(inputAppearance),
           borderColor: error ? '#2d68fe !important' : 'inherit',

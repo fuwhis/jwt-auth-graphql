@@ -3,7 +3,7 @@
 @import "sass-rem";
 
 .header_wrapper {
-  background: hsla(0, 0%, 100%, 0.6);
+  background: hsla(0, 0%, 91%, 0.731);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   height: rem(64px);
   width: 100%;
@@ -26,9 +26,11 @@
   .header_right {
     height: rem(64px);
     width: rem(177px);
-    border-left: 1px solid $solid-neutral-50;
+    display: flex;
+    align-items: center;
+    gap: rem(20px);
+    // border-left: 1px solid $solid-neutral-300;
     .menu_btn {
-      display: flex;
       gap: rem(8px);
       height: 100%;
       width: 100%;

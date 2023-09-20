@@ -1,24 +1,25 @@
-@import 'src/assets/scss/variables.scss';
-@import 'src/assets/scss/mixins.scss';
-@import 'sass-rem';
+@import "src/assets/scss/variables.scss";
+@import "src/assets/scss/mixins.scss";
+@import "sass-rem";
 
 @mixin init {
   fieldset {
     border: 0;
   }
-  input[type='password'] {
+  input[type="password"] {
     font: small-caption;
   }
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 }
 
 // Define input states size
-@mixin inputSize($height, $fontSize, $lineHeight) {
+@mixin inputSize($height, $width, $fontSize, $lineHeight) {
   height: rem($height);
+  width: rem($width);
   border-radius: rem(6px);
   input {
     height: inherit;
@@ -41,17 +42,21 @@
 .custom_input {
   &.size {
     &_lg {
-      @include inputSize(56px, 16px, 24px);
+      @include inputSize(56px, 640px, 16px, 24px);
     }
     &_md {
-      @include inputSize(44px, 14px, 20px);
+      @include inputSize(44px, 480px, 14px, 20px);
+    }
+    &_sm {
+      @include inputSize(39px, 480px, 14px, 20px);
     }
   }
   &.variant {
     @include init;
     &_solid {
-      border: 1px solid $grey-f5;
+      border: 1px solid $grey-9a;
       background-color: $grey-f5;
+      border-radius: 50px;
       &:hover {
         border: 1px solid $informing-primary;
         background: $white-basic;
