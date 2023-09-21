@@ -22,10 +22,12 @@ export const FONT_WEIGHT = {
 
 //Enumes
 export enum PATH {
+  HOME = "/",
   DASHBOARD = "/dashboard",
   /* User path */
   USER = "/user",
   PROFILE = "/profile",
+  REGISTER = "/register",
   USER_LIST = "user-list",
   DETAIL_USER = "detail/:id",
   SEND_MAIL = "send-mail",

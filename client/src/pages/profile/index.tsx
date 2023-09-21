@@ -1,4 +1,4 @@
-import { useHelloQuery } from "../../generated/graphql"
+import { useHelloQuery } from "~/generated/graphql"
 
 const Profile = () => {
     const { data, loading, error } = useHelloQuery({ fetchPolicy: 'no-cache' })

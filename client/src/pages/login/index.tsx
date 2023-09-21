@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../context/AuthContext"
-import { useLoginMutation } from "../../generated/graphql"
-import JWTManager from '../../utils/jwt'
+import { useAuthContext } from "~/context/AuthContext"
+import { useLoginMutation } from "~/generated/graphql"
+import JWTManager from '~/utils/jwt'
 
 const Login = () => {
     const { setIsAuthenticated } = useAuthContext()

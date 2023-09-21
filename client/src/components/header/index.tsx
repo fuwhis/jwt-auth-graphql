@@ -6,7 +6,12 @@ import { SearchIcon } from '~/assets/icons';
 import Avatar from '~/elements/avatar';
 import { ArrowDownMiniIcon, ArrowUpMiniIcon, LogOutIcon, SettingIcon } from '../../assets/imgs';
 import { Input, Popover } from '../../elements';
-import { useDialog } from '../../hooks/use-dialog';
+// import { useDialog } from '../../hooks/use-dialog';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from '~/constants/common';
+import { useAuthContext } from '~/context/AuthContext';
+import { useLogoutMutation } from '~/generated/graphql';
+import JWTManager from '~/utils/jwt';
 import { usePopover } from '../../hooks/use-popover';
 import styles from './header.module.scss';
 
@@ -28,9 +33,21 @@ const PopoverButton = ({ icon, children, onClick }: { icon: string; children: Re
 const Header = () => {
    const { anchorEl, popoverId, openPopOver, onClosePopover, open: isOpen } = usePopover(1);
 
-   const { open, onOpenDialog: confirmOpenFn, onCloseDialog: confirmCloseFn } = useDialog()
+   // const { open, onOpenDialog: confirmOpenFn, onCloseDialog: confirmCloseFn } = useDialog()
 
    const { control, getValues, setValue, reset } = useForm<any>(formOptions)
+
+   const { isAuthenticated, logoutClient } = useAuthContext();
+
+   const [logoutServer, _] = useLogoutMutation()
+
+   const navigate = useNavigate();
+   const handleLogout = async () => {
+      // doSth
+      logoutClient()
+      await logoutServer({ variables: { userId: JWTManager.getUserId()?.toString() as string } })
+      navigate(PATH.LOGIN)
+   }
 
    return (
       <Box className={styles.header_wrapper}>
@@ -67,7 +84,7 @@ const Header = () => {
                   >
                      Settings
                   </PopoverButton>
-                  <PopoverButton onClick={confirmOpenFn} icon={LogOutIcon}>
+                  <PopoverButton onClick={handleLogout} icon={LogOutIcon}>
                      Sign Out
                   </PopoverButton>
                </Box>

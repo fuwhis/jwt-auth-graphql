@@ -2,8 +2,10 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import AuthContextProvider from './context/AuthContext';
+import NavigateSetter from './routes/navigate-setter';
 import JWTManager from './utils/jwt';
 
 const httpLink = createHttpLink({
@@ -38,11 +40,14 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <ApolloProvider client={client}>
-    <AuthContextProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </AuthContextProvider>
-  </ApolloProvider>
+  <BrowserRouter>
+    <NavigateSetter />
+    <ApolloProvider client={client}>
+      <AuthContextProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </AuthContextProvider>
+    </ApolloProvider>
+  </BrowserRouter>
 );

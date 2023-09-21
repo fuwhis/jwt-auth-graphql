@@ -1,8 +1,8 @@
-import { useRoutes } from "react-router-dom"
-import Profile from "~/components/Profile"
+import { Navigate, useRoutes } from "react-router-dom"
+import Home from "~/components/Home"
 import { PATH } from "~/constants/common"
-import { Login } from "~/pages"
-import Layout from "../layouts"
+import Layout from "~/layouts"
+import { Login, Profile, Register } from "~/pages"
 import RequireAuth from "./require-auth"
 
 
@@ -20,12 +20,23 @@ const Routes = () => {
                         }
                     ]
                 },
-
+                {
+                    path: PATH.HOME,
+                    element: <Home />,
+                },
             ]
+        },
+        {
+            path: PATH.REGISTER,
+            element: <Register />
         },
         {
             path: PATH.LOGIN,
             element: <Login />,
+        },
+        {
+            path: '',
+            element: <Navigate to='/login' />,
         },
     ])
 

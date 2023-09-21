@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useRegisterMutation } from "../generated/graphql"
+import { useRegisterMutation } from "~/generated/graphql"
 
 const Register = () => {
     const [username, setUsername] = useState('')

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './assets/scss/global.scss';
 // import Layout from './components/Layout';
-import Layout from '../src/layouts/index';
+// import Layout from '../src/layouts/index';
 import { useAuthContext } from './context/AuthContext';
+import Routes from './routes';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -30,7 +31,8 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter> */}
-      <Layout />
+      {/* <Layout /> */}
+      <Routes />
     </div>
   );
 }
