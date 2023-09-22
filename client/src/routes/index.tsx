@@ -3,6 +3,7 @@ import Home from "~/components/Home"
 import { PATH } from "~/constants/common"
 import Layout from "~/layouts"
 import { Login, Profile, Register } from "~/pages"
+import Product from "~/pages/product"
 import RequireAuth from "./require-auth"
 
 
@@ -23,6 +24,10 @@ const Routes = () => {
                 {
                     path: PATH.HOME,
                     element: <Home />,
+                },
+                {
+                    path: PATH.PRODUCT,
+                    element: <Product />,
                 },
             ]
         },

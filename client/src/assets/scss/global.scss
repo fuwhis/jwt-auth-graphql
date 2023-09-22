@@ -77,16 +77,18 @@
 
 body {
   background-color: $background;
-  font-family: "Roboto", sans-serif;
+  font-family: "Pretendard", sans-serif;
   margin: 0px;
+}
+
+main {
+  padding: 24px;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // TEMPORARY
-  // text-align: center;
 }
 
 /* CHECKING */

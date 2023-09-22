@@ -65,6 +65,36 @@ const theme = createTheme({
       lineHeight: convertToRem(24),
       fontWeight: 400,
     },
+    text_body_01: {
+      fontSize: convertToRem(16),
+      lineHeight: convertToRem(20),
+      fontWeight: 400,
+    },
+    text_body_02: {
+      fontSize: convertToRem(14),
+      lineHeight: convertToRem(18),
+      fontWeight: 400,
+    },
+    text_headline_01: {
+      fontSize: convertToRem(24),
+      lineHeight: convertToRem(30),
+      fontWeight: 600,
+    },
+    text_headline_02: {
+      fontSize: convertToRem(20),
+      lineHeight: convertToRem(24),
+      fontWeight: 600,
+    },
+    text_headline_03: {
+      fontSize: convertToRem(18),
+      lineHeight: convertToRem(22),
+      fontWeight: 600,
+    },
+    text_headline_04: {
+      fontSize: convertToRem(16),
+      lineHeight: convertToRem(20),
+      fontWeight: 600,
+    },
     h1: {
       fontSize: convertToRem(31),
       lineHeight: convertToRem(44),

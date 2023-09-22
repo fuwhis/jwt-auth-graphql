@@ -19,8 +19,14 @@ export type TypographyProps = MTypographyProps &
       | "text_sm_regular"
       | "text_sm_medium"
       | "text_xs_regular"
+      | "text_md_regular"
       | "h1"
       | "h2"
-      | "text_md_regular";
+      | "text_body_01"
+      | "text_body_02"
+      | "text_headline_01"
+      | "text_headline_02"
+      | "text_headline_03"
+      | "text_headline_04";
     color?: UnionType;
   };

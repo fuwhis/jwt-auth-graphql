@@ -54,6 +54,9 @@ export enum PATH {
   COUPON = "/coupon",
   PAYMENT = "/payment",
   LOGIN = "/login",
+
+  /* BURNINGBROS TEST */
+  PRODUCT = "/product",
 }
 
 export enum GENDER {

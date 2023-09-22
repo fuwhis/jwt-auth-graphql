@@ -5,7 +5,7 @@ import LoadingImg from '~/assets/icons/image-loading.svg';
 import { ImageProps } from '~/types/image.interface';
 import './style.scss';
 
-const Image = ({ src, alt }: ImageProps) => {
+const Image = ({ src, alt, assignedWidth, assignedHeight, radius }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   function handleImageLoaded() {
@@ -32,7 +32,7 @@ const Image = ({ src, alt }: ImageProps) => {
             return;
           event.currentTarget.src = DefaultImg;
         }}
-        style={{ opacity: isLoading ? 0 : 1 }}
+        style={{ opacity: isLoading ? 0 : 1, width: `${assignedWidth}px`, height: `${assignedHeight}px`, borderRadius: `${radius}px` }}
       />
     </>
   );

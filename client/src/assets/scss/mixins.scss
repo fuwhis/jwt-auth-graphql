@@ -120,3 +120,7 @@
   scrollbar-width: thin !important;
   overflow-x: hidden;
 }
+
+@mixin elevation($x, $y, $blur, $spread) {
+  box-shadow: $x $y $blur $spread rgba(0, 0, 0, 0.12);
+}
