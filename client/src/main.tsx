@@ -1,5 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -36,6 +38,17 @@ const client = new ApolloClient({
 //   cache: new InMemoryCache()
 // })
 
+const queryCache = new QueryCache()
+const queryClient = new QueryClient({
+  queryCache: queryCache,
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+})
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -44,9 +57,12 @@ root.render(
     <NavigateSetter />
     <ApolloProvider client={client}>
       <AuthContextProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </AuthContextProvider>
     </ApolloProvider>
   </BrowserRouter>
