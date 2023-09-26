@@ -16,7 +16,7 @@ const ProductList = () => {
         setOpen(tempOpen)
 
         // Fetch api with cate parameter
-        if (tempOpen[index]) fetchProductByCategory(cate)
+        if (tempOpen[index]) { fetchProductByCategory(cate) }
     }
 
     const fetchProductByCategory = async (cate: string) => {
@@ -46,9 +46,9 @@ const ProductList = () => {
     return (
         <List className={styles.list_container}>
             {category.map((cate: string, index: number) => (
-                <List key={cate} component={"div"} disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} onClick={() => handleToggleCategory(index, cate)}>
-                        <ListItemIcon>
+                <List key={cate} component="div" disablePadding>
+                    <ListItemButton sx={{ pl: 2, gap: '8px' }} onClick={() => handleToggleCategory(index, cate)}>
+                        <ListItemIcon sx={{ minWidth: 0 }}>
                             <Box component={'img'} src={open[index] ? CollapseDownIcon : CollapseIcon} />
                         </ListItemIcon>
                         <ListItemText primary={cate} />
@@ -56,15 +56,14 @@ const ProductList = () => {
                     <Collapse in={open[index]} timeout="auto" unmountOnExit>
                         {productByCategory.map((item: any) => (
                             <List key={item?.id} component="div" disablePadding>
-                                <ListItem>
-                                    <ListItemAvatar className={styles.product_thumbnail}>
-                                        <Image alt='thumb' src={item?.thumbnail} assignedWidth={72} assignedHeight={72} />
+                                <ListItem sx={{ gap: '24px', padding: '12px 16px 12px 16px', marginLeft: '32px' }}>
+                                    <ListItemAvatar>
+                                        <Image alt='thumb' src={item?.thumbnail} assignedWidth={72} assignedHeight={72} radius={8} />
                                     </ListItemAvatar>
                                     <ListItemText primary={item?.title} secondary={`$${item?.price}`} />
                                 </ListItem>
                             </List>
                         ))}
-                        {/* <ProductByCategory products={productByCategory} /> */}
                     </Collapse>
                 </List>
             ))}
