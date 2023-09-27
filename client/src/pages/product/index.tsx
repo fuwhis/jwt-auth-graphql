@@ -1,6 +1,5 @@
 import { Box, Divider, Paper } from "@mui/material";
-import { SearchIcon } from "~/assets/icons";
-import { Input, Typography } from "~/elements";
+import { Typography } from "~/elements";
 import ProductList from "./product-list";
 import styles from './product.module.scss';
 
