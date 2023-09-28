@@ -1,15 +1,25 @@
 import { Box, Collapse, List, ListItem, ListItemAvatar, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useState } from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { CollapseDownIcon, CollapseIcon } from '~/assets/imgs';
 import Image from '~/elements/image';
 import { getAllProductCategories, getProductsOfCategory } from '~/services/product.service';
-// import CustomizeList from './components/product-by-category';
 import styles from './product.module.scss';
+
+type IProduct = {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    thumbnail: string;
+    images: string[];
+}
 
 const ProductList = () => {
     const [open, setOpen] = useState<boolean[]>([]);
     const [openCategory, setOpenCategory] = useState<string>("")
+
     /** Get list of categories */
     const { isLoading, data: categories } = useQuery(['categories'], getAllProductCategories);
 
@@ -26,25 +36,6 @@ const ProductList = () => {
         },
         retry: false,
     });
-
-    const useToggle = (currentCate: string, nextCate: string) => {
-        const queryClient = useQueryClient();
-
-        const getNameCategory = (name: string) => name;
-
-        return useQuery(
-            getNameCategory(currentCate),
-            () => getProductsOfCategory(currentCate),
-            {
-                onSuccess: () => {
-                    queryClient.prefetchQuery(getNameCategory(nextCate), () => getProductsOfCategory(nextCate));
-                },
-                onError: (error: any) => {
-                    console.log('test--', error)
-                }
-            }
-        )
-    }
 
     const handleCategoryClick = (index: number, cate: string) => {
         // Set toggle
@@ -73,7 +64,7 @@ const ProductList = () => {
 
                     <Collapse in={open[index]} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            {payload?.products?.map((item: any) => {
+                            {payload?.products?.map((item: IProduct) => {
                                 return (
                                     <ListItem key={item?.id} className={styles.product_item}>
                                         <ListItemAvatar>
