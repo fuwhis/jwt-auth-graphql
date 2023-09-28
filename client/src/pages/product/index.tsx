@@ -17,7 +17,6 @@ const Product = () => {
             <Box component='div' className={styles.stack_search}>
                 <CustomInput
                     className={styles.search_input}
-                    // sx={{ width: '440px' }}
                     inputSize='sm'
                     inputAppearance='solid'
                     name='keySearch'

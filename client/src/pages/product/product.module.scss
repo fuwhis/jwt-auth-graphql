@@ -42,7 +42,7 @@
   // padding-left: 16px;
   min-width: rem(480px);
   max-height: rem(780px);
-  overflow: auto;
+  overflow: hidden;
 
   &:hover {
     overflow-y: scroll;
@@ -51,6 +51,7 @@
     height: 314px;
   }
   &::-webkit-scrollbar {
+    max-height: rem(314px);
     width: rem(4px);
     background-color: $neutral-4;
   }
