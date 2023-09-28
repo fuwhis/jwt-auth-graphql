@@ -4,17 +4,9 @@ import { useQuery } from 'react-query';
 import { CollapseDownIcon, CollapseIcon } from '~/assets/imgs';
 import Image from '~/elements/image';
 import { getAllProductCategories, getProductsOfCategory } from '~/services/product.service';
+import { IProduct } from '~/types/product.interface';
 import styles from './product.module.scss';
 
-type IProduct = {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    thumbnail: string;
-    images: string[];
-}
 
 const ProductList = () => {
     const [open, setOpen] = useState<boolean[]>([]);
@@ -40,7 +32,6 @@ const ProductList = () => {
     const handleCategoryClick = (index: number, cate: string) => {
         // Set toggle
         let tempOpen = [...open];
-        // tempOpen = tempOpen.map(() => false);
         tempOpen[index] = !tempOpen[index];
         setOpen(tempOpen);
         setOpenCategory(cate); // set name of category after click
