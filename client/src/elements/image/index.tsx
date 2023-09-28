@@ -16,7 +16,7 @@ const Image = ({ src, alt, assignedWidth, assignedHeight, radius }: ImageProps) 
   return (
     <>
       {isLoading && (
-        <Box display="flex" alignItems="center" justifyContent="center" width="100%">
+        <Box display="flex" alignItems="center" justifyContent="end" width="100%">
           <Box component="img" className='img-loading' alt={alt} width="50px !important" src={LoadingImg} loading="lazy" />
         </Box>
       )}

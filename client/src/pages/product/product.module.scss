@@ -37,6 +37,9 @@
   min-width: rem(480px);
   max-height: rem(780px);
   overflow: auto;
+  .product_container {
+    padding-left: 64px;
+  }
   .product_category {
     display: flex;
     align-items: center;
@@ -49,8 +52,16 @@
     }
   }
 
-  .product_container {
-    padding-left: 64px;
+  .product_item {
+    width: 440px;
+    gap: 24px;
+    padding: 12px 16px 12px 16px;
+    margin-left: 32px;
+    &:hover {
+      // max-width: 440px;
+      border-radius: 8px;
+      border: 1px solid $primary-30;
+    }
   }
 
   .product_thumbnail {

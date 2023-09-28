@@ -1,7 +1,7 @@
-import jwtDecode, { JwtPayload } from 'jwt-decode';
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 const JWTManager = () => {
-  const LOGOUT_EVENT_NAME = 'jwt-logout';
+  const LOGOUT_EVENT_NAME = "jwt-logout";
   let inMemoryToken: string | null = null;
   let refreshTokenTimeoutId: number | null = null;
   let userId: number | null = null;
@@ -35,7 +35,7 @@ const JWTManager = () => {
   };
 
   // To logout all tabs (nullify inMemory accessToken)
-  window.addEventListener('storage', (event) => {
+  window.addEventListener("storage", (event) => {
     if (event.key === LOGOUT_EVENT_NAME) {
       inMemoryToken = null;
     }
@@ -44,7 +44,7 @@ const JWTManager = () => {
   const getRefreshToken = async () => {
     try {
       const response = await fetch(import.meta.env.VITE_REFRESH_TOKEN_URI, {
-        credentials: 'include',
+        credentials: "include",
       });
 
       const data = (await response.json()) as {
@@ -55,7 +55,7 @@ const JWTManager = () => {
       setToken(data.accessToken);
       return true;
     } catch (error) {
-      console.log('ERROR: ', error);
+      console.log("ERROR: ", error);
       removeToken();
       return false;
     }
@@ -64,7 +64,7 @@ const JWTManager = () => {
   const setRefreshToken = (delay: number) => {
     refreshTokenTimeoutId = window.setTimeout(
       getRefreshToken,
-      delay * 1000 - 5000 // millisecond
+      delay * 10000 - 5000 // millisecond
     );
   };
 

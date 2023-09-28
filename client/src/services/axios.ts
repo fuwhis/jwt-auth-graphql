@@ -4,7 +4,7 @@ import History from "./navigate.service";
 import TokenService from "./token.service";
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL_DEVELOP,
+  baseURL: import.meta.env.VITE_DUMMY_API,
   headers: {
     "Content-Type": "application/json",
     "Accept-Language": "KR",
