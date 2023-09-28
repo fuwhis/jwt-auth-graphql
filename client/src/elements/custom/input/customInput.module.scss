@@ -54,11 +54,11 @@
   &.variant {
     @include init;
     &_solid {
-      border: 1px solid $grey-9a;
-      background-color: $grey-f5;
-      border-radius: 50px;
+      border: 1px solid $neutral-4;
+      background-color: $neutral-7;
+      border-radius: rem(50px);
       &:hover {
-        border: 1px solid $informing-primary;
+        border: 1px solid $primary-30;
         background: $white-basic;
       }
     }
@@ -66,7 +66,7 @@
       background-color: $white-basic;
       box-shadow: $bs-neutral-lg;
       &:hover {
-        border: 1px solid $informing-primary;
+        border: 1px solid $primary-30;
         background: $white-basic;
       }
     }

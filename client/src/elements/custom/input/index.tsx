@@ -75,16 +75,16 @@ const CustomInput = ({
     return type || 'text'
   }
 
-  const dynamicClasses = `${styles.custom_input} ${styles[`size_${inputSize}`]} ${styles[`variant_${inputAppearance}`]} ${className}`
+  const dynamicClasses = `${className} ${styles.custom_input} ${styles[`size_${inputSize}`]} ${styles[`variant_${inputAppearance}`]}`
 
   const getInputEffect = (appearance: InputAppearance) => {
     switch (appearance) {
       case 'solid':
         return {
           '&.Mui-focused': {
-            border: '1px solid #2d68fe',
+            border: '1px solid #6713ef',
             background: '#fff',
-            boxShadow: '0px 0px 0px 2px rgba(45, 104, 254, 0.2)',
+            // boxShadow: '0px 0px 0px 2px rgba(45, 104, 254, 0.2)',
           },
           '&.Mui-disabled': {
             border: '1px solid #f1f2f3 !important',
@@ -94,7 +94,7 @@ const CustomInput = ({
       case 'ghost':
         return {
           '&.Mui-focused': {
-            border: '1px solid #2d68fe',
+            border: '1px solid #6713ef',
             background: '#fff',
             boxShadow: '0px 0px 0px 2px rgba(45, 104, 254, 0.2)',
           },

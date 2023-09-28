@@ -66,3 +66,5 @@ export { default as SchumpeterLogo } from './schumpeter.svg'
 // BurningBros
 export { default as CollapseIcon } from './ic_chevron_24.svg'
 export { default as CollapseDownIcon } from './ic_chevron_24_down.svg'
+// export { default as NewSearchIcon } from './ic_search_18.svg'
+
