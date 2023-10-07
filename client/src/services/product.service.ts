@@ -15,6 +15,7 @@ export async function getSingleProduct(id: number) {
 
 export async function searchProducts(searchTxt: string) {
   const { data } = await api.get(`${ENDPOINT}/search?q=${searchTxt}`);
+  console.log(data)
   return data;
 }
 

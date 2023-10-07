@@ -16,6 +16,8 @@
 
   // padding-left: 64px;
   .stack_search {
+    @include flex-center;
+    align-items: center;
     // margin-bottom: 32px;
   }
   .search_input {
